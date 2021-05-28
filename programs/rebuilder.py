@@ -37,12 +37,15 @@ POS = '''P[{position_index}] {{
 }};'''
 
 def sort(names):
+  """Функция сортировки имен файлов в папке.
+     - На вход подаются массив имен файлов.
+     - На выходе возвращается отсортированный массив имен файлов."""
   for i in range(len(names) - 1):
     for j in range(len(names) - 1 - i):
       name1, name2 = names[j].split('_'), names[j + 1].split('_')
       if len(name1) == 1:
         continue
-      elif len(name2) == 1 and j > 0:
+      elif len(name2) == 1 and j >= 0:
         names[j], names[j + 1] = names[j + 1], names[j]        
       elif int(name1[1].split('.')[0]) > int(name2[1].split('.')[0]):
         names[j], names[j + 1] = names[j + 1], names[j]
@@ -50,6 +53,7 @@ def sort(names):
   return names
 
 def is_near(pos1, pos2):
+  """Проверка что две точки рядом."""
   x1, y1, z1 = pos1
   x2, y2, z2 = pos2
   if abs(x1 - x2) < 6.0 and abs(y1 - y2) < 6.0 and abs(z1 - z2) < 6.0:
@@ -58,6 +62,9 @@ def is_near(pos1, pos2):
     return False
 
 def get_info(filename, commands, positions):
+  """Функция извлечения данных о коммандах и кординатах из файла и добавление этих данных к старым даннм.
+     - На вход полается имя файла, массив команд и массив координат точек.
+     - На выходе возвращаются массив команд и массив координат точек."""
   f = open(filename, 'r')
   flag = False
 
@@ -65,12 +72,12 @@ def get_info(filename, commands, positions):
     if line[:-1] == '/POS':
       flag = True
       s = ''
-    elif line[:-1] == '};':
-      coords = s.split('\n')[4].split()
-      x, y, z = float(coords[2]), float(coords[6]), float(coords[10])
-      positions.append([x, y, z])
-      s = ''
     if flag:
+      if line[:-1] == '};':
+        coords = s.split('\n')[4].split()
+        x, y, z = float(coords[2]), float(coords[6]), float(coords[10])
+        positions.append([x, y, z])
+        s = ''
       s = '{}{}'.format(s, line)
     else:
       command = line.split()
@@ -89,6 +96,11 @@ def get_info(filename, commands, positions):
 
 
 def make_layers(commands, positions):
+  """Функция, сохраняющая команды и координаты точек по слоям в виде строк.
+     Слой определяется по координате Z.
+     - На вход подаются массив команд и массив координат точек.
+     - На выходе возвращается массив слоев, каждый элемент которого содержит массив команд
+     и массив координат точек в виде строк для записи в ls файл."""
   layers = []
   cs, ps =[], []
   z = None
@@ -104,18 +116,14 @@ def make_layers(commands, positions):
 
     elif commands[i] == 'End':
       weld_speed = False
-      #print(len(layers), start_ind, len(cs))
       if start_ind != None:
-        #print(start_point, positions[int(commands[i - 2])])
-        if start_point == positions[int(commands[i - 1]) - 1]:# or is_near(start_point, positions[int(commands[i - 2])]):
-          print(len(layers) - 1, len(ps), start_point, positions[int(commands[i - 1])])
+        """Проверка наличия замкнутого контура."""
+        if start_point == positions[int(commands[i - 1]) - 1]:
           cs[start_ind] = START.format(job=2)
           cs.append(END.format(job=2))
         else:
           cs[start_ind] = START.format(job=1)
           cs.append(END.format(job=1))
-      else:
-        print(len(layers) - 1)
       
 
     elif commands[i] != None:
