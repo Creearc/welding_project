@@ -1,0 +1,21 @@
+/* dot -Tpng structure_scheme.dot -o structure_scheme.png */
+
+digraph G {
+"Компьютер" [shape=box];
+"Контроллер Fanuc" [shape=box];
+"Робот Fanuc" [shape=box];
+"Пульт Fanuc" [shape=box];
+"Источник питания Fronius" [shape=box];
+"Источник питания Fronius плата контроллера" [shape=box];
+"Пульт Fronius" [shape=box];
+"Роутер" [shape=box];
+
+"Компьютер" -> "Роутер" [dir=both, label="Eternet"];
+"Контроллер Fanuc" -> "Роутер" [dir=both, label="Eternet"];
+"Источник питания Fronius" -> "Роутер" [dir=both, label="Eternet"];
+"Робот Fanuc" -> "Контроллер Fanuc" [dir=both];
+"Пульт Fanuc" -> "Контроллер Fanuc" [dir=both];
+"Пульт Fronius" -> "Источник питания Fronius" [dir=both];
+"Источник питания Fronius плата контроллера" -> "Источник питания Fronius" [dir=both];
+"Компьютер" -> "Источник питания Fronius плата контроллера" [dir=both, label="Eternet"];
+}

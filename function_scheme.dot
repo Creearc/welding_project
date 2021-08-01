@@ -1,0 +1,23 @@
+/* dot -Tpng function_scheme.dot -o function_scheme.png */
+
+digraph G {
+"Компьютер" [shape=box];
+"Контроллер Fanuc" [shape=box];
+"Робот Fanuc" [shape=box];
+"Пульт Fanuc" [shape=box];
+"Источник питания Fronius" [shape=box];
+"Источник питания Fronius плата контроллера" [shape=box];
+"Пульт Fronius" [shape=box];
+
+"Компьютер" -> "Контроллер Fanuc" [dir=both, label="FTP, HTML (просмотр статуса)"];
+"Компьютер" -> "Источник питания Fronius" [dir=both, label="FTP (просмотр), HTML (просмотр статуса)"];
+"Компьютер" -> "Источник питания Fronius плата контроллера" [dir=both, label=" HTML (просмотр статуса, редактирование jobов заблокировано)"];
+"Контроллер Fanuc" -> "Источник питания Fronius" [dir=both, label="EtherNet/IP управление Источником и получение его статуса"];
+"Контроллер Fanuc" -> "Робот Fanuc" [label="Сигналы управления"];
+"Робот Fanuc" -> "Контроллер Fanuc" [label="Сигналы состояния"];
+"Контроллер Fanuc" -> "Источник питания Fronius" [dir=both, label="EtherNet/IP управление Источником и получение его статуса"];
+"Контроллер Fanuc" -> "Пульт Fanuc" [label="Отображение состояния, файлов, настроек"];
+"Пульт Fanuc" -> "Контроллер Fanuc" [label="Управление"];
+"Источник питания Fronius" -> "Пульт Fronius" [label="Дублирование информации с экрана"];
+"Пульт Fronius" -> "Источник питания Fronius" [label="Управление"];
+}
