@@ -1,6 +1,6 @@
 from eeip import *
 
-host = '192.168.68.103'
+host = '192.168.0.101'
 
 import time
 
@@ -11,7 +11,7 @@ eeipclient.register_session(host)
 
 #Parameters from Originator -> Target
 eeipclient.o_t_instance_id = 0x64
-eeipclient.o_t_length = 4
+eeipclient.o_t_length = 16
 eeipclient.o_t_requested_packet_rate = 100000  #Packet rate 100ms (default 500ms)
 eeipclient.o_t_realtime_format = RealTimeFormat.HEADER32BIT
 eeipclient.o_t_owner_redundant = False
@@ -28,6 +28,8 @@ eeipclient.t_o_variable_length = False
 eeipclient.t_o_connection_type = ConnectionType.MULTICAST
 
 #Forward open initiates the Implicit Messaging
+eeipclient.large_forward_open = True
+print(1)
 eeipclient.forward_open()
 while 1:
     print('State of the first Input byte: {0}'.format(eeipclient.t_o_iodata[8]))
