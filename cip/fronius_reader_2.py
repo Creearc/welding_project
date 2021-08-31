@@ -55,9 +55,6 @@ Power source to robot
 {a7}
 {a8}
 
-{s1}
-{s2}
-
 {pi}
 '''
 
@@ -66,8 +63,6 @@ def info_thread():
     while True:
       g_info = ask(plc, b'\xa2', 1, 5)
       info = ask(plc, b'\xa2', 2, 5)
-      smth1 = ask(plc, b'\xa2', 800, 5)
-      smth2 = ask(plc, b'\xa2', 801, 5)
       if info is None:
         continue
       g_info = to_normal(to_bin(g_info))
@@ -105,9 +100,6 @@ def info_thread():
                                          a7=a[24:28],
                                          a8=a[28:32],
 
-                                         s1=smth1,
-                                         s2=smth2,
-                                       
                                          pi=0))
       time.sleep(0.05)
   
