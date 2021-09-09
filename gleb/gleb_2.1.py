@@ -54,8 +54,10 @@ def state_chek():
   start_button.configure(text="Слой закончен", bg="blue")
 
 def process_2():
-  global is_start, files, path, layer_int, z_int, not_auto, ftp, last_file, is_continuous 
+  global is_start, files, path, layer_int, z_int, not_auto, last_file, is_continuous 
   f = cip.Fanuc()
+  ftp = ftp_functions.Ftp_connection()
+  
   old_is_continuous = is_continuous.get()
 
   while True:
@@ -80,17 +82,7 @@ def process_2():
         last_file = file_name
 
         f.write_r(33, 3)
-
-        if is_continuous.get() != old_is_continuous:
-          old_is_continuous = is_continuous.get()
-          if is_continuous.get():
-            if not_auto.get():
-              f.write_r(32, 2)
-            else:
-              f.write_r(32, 5)
-          else:
-            f.write_r(32, 6)
-
+      
         if layer_int.get() == len(files)+1:
           if int(f.read_r(32)[1][0]) == 0:
             f.write_r(33, 99)
@@ -101,7 +93,17 @@ def process_2():
         start_button.configure(text="Слой в работе", bg="yellow")       
       else:
         start_button.configure(text="Слой в работе [завершение]", bg="yellow")
-              
+
+    weld_state = int(f.read_r(32)[1][0])
+    if is_continuous.get():
+      if not_auto.get():
+        if weld_state == 0 or weld_state == 5:
+          f.write_r(32, 2)
+      else:
+        f.write_r(32, 5)
+    else:
+      f.write_r(32, 6)
+            
     time.sleep(0.05)
     
 
