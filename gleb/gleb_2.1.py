@@ -6,6 +6,7 @@ import tkinter as tk
 
 import cip2 as cip
 import ftp_functions
+import log_functions
 
 def sort(names):
   """Функция сортировки имен файлов в папке.
@@ -56,16 +57,25 @@ def state_chek():
 def process_2():
   global is_start, files, path, layer_int, z_int, not_auto, last_file, is_continuous 
   f = cip.Fanuc()
+  log = log_functions.Log()
   ftp = ftp_functions.Ftp_connection()
+  file_name = None
+  file_to_delete = None
+  file_to_delete_time = 0.0
   
   old_is_continuous = is_continuous.get()
+  
+  log.add('')
+  log.add('___________________________')
+  log.add('Программа включена')
 
   while True:
-    z_int.set(int(f.read_r(30)[1][0]))
+    #z_int.set(int(f.read_r(30)[1][0]))
 
     state = int(f.read_r(33)[1][0])
     if state == 1:
       start_button.configure(text="Запустить", bg="green")
+      if file_name != None: log.add('{} завершен'.format(file_name))
       if is_start:
         if not_auto.get():
           is_start = False
@@ -75,19 +85,32 @@ def process_2():
 
         file_name = files[layer_int.get() - 1]
         if last_file != None and last_file != file_name:
-          ftp.delete(last_file, path+'/')
-
+          file_to_delete = last_file
+          file_to_delete_time = time.time()
+          
         f.write_sr(20, file_name[:-3].upper())
         ftp.send(file_name, path+'/', file_name)
         last_file = file_name
 
         f.write_r(33, 3)
+        log.add('{} начат'.format(file_name))
+
+        tmp = file_name.split('_')
+        if len(tmp) >= 2:
+          z_int.set(tmp[-2])
+        else:
+          z_int.set(-1)
       
-        if layer_int.get() == len(files)+1:
+        if layer_int.get() > len(files) - 1:
+          layer_int.set(1)
+          is_start = False
           if int(f.read_r(32)[1][0]) == 0:
             f.write_r(33, 99)
           else:
             f.write_r(33, 98)    
+    elif state == 0:
+      start_button.configure(text="Программа завершена", bg="blue")
+      if file_name != None: log.add('{} завершен'.format(file_name))
     else:
       if is_start:
         start_button.configure(text="Слой в работе", bg="yellow")       
@@ -97,12 +120,17 @@ def process_2():
     weld_state = int(f.read_r(32)[1][0])
     if is_continuous.get():
       if not_auto.get():
-        if weld_state == 0 or weld_state == 5:
+        if weld_state == 0 or weld_state == 5 or weld_state == 7:
           f.write_r(32, 2)
       else:
         f.write_r(32, 5)
     else:
       f.write_r(32, 6)
+
+    if file_to_delete != None and time.time() - file_to_delete_time > 5.0:
+      print('File to delete {}'.format(file_to_delete))
+      ftp.delete(file_to_delete)
+      file_to_delete = None
             
     time.sleep(0.05)
     
@@ -133,9 +161,9 @@ last_file = None
 is_start = False
 path = []
 if len(sys.argv) > 1:
-  path = sys.argv[1].split('\\')[-1]
+  path = sys.argv[1]
 else:
-  path ='t1'
+  path ='test_TP'
 
 files = os.listdir(path)
 out = []
@@ -150,6 +178,7 @@ print('________________________________________')
 
 ftp = ftp_functions.Ftp_connection()
 ftp.send('main.tp', '', 'main.tp')
+
 
 try:
   master = tk.Tk()
@@ -203,5 +232,6 @@ try:
   master.mainloop()
   
 except KeyboardInterrupt:
+  log.add('Программа выключена')
   master.destroy()
   sys.exit()

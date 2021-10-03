@@ -48,10 +48,20 @@ with CIPDriver(robot) as plc:
     print(read_register(plc, 25))
     print(write_register(plc, 25, 31))
     print(read_register(plc, 25))
-    
+
+    print(read_register(plc, 29))
+
+    print(ask(plc,
+              class_code=b'\x04',
+              instance=103,
+              attribute=3,
+              service=b"\x0E"))
+
+'''    
 s = b'\x0b\x01\x01\x00\x99\x99\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 s = b'\n\x00\x01\x00\x99\x99\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
 with CIPDriver('192.168.0.2') as plc:
     print(ask(plc, b'\xa2', 1, 5, b"\x0E"))
     #print(DINT.encode(45))
     print(ask(plc, b'\xa2', 1, 5, b"\x10", s))
+'''

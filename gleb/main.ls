@@ -37,10 +37,16 @@ CONTROL_CODE    = 00000000 00000000;
 : R[33]=2;
 : ;
 : IF R[32]=3, JMP LBL[4];
+: IF R[32]=5, JMP LBL[10];
+: JMP LBL[6];
+: LBL[10];
+: Arc Start[1];
+: R[32]=7;
 : JMP LBL[6];
 : LBL[4];
 : Arc Start[1];
 : R[32]=2;
+: JMP LBL[6];
 : LBL[6];
 : ;
 : CALL SR[20];
@@ -51,6 +57,7 @@ CONTROL_CODE    = 00000000 00000000;
 : LBL[98];
 : Arc End[1];
 : LBL[99];
+: R[33]=0;
 /POS
 /END
 

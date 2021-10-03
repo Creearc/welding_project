@@ -1,0 +1,12 @@
+Get Attribute All : Class 0x01 - Instance 0x01 :
+Req UCMM: 01 02 20 01 24 01 
+Res: 81 00 00 00 34 05 0C 00 01 03 01 2A 61 00 64 15 4B A0 20 46 72 6F 6E 69 75 73 2D 46 42 2D 49 6E 73 69 64 65 2D 45 74 68 65 72 4E 65 74 49 50 28 54 4D 29 FF 00 00 00 
+Send Receive EM
+Req UCMM: 0E 03 20 6D 24 01 30 01 
+Res: CIP Status = 5 (0x05) Ext = None => Path destination unknown
+Send Receive EM
+Req UCMM: 0E 03 20 6D 24 01 30 08 
+Res: CIP Status = 5 (0x05) Ext = None => Path destination unknown
+Send Receive EM
+Req UCMM: 0E 03 20 6D 24 01 30 08 
+Res: CIP Status = 5 (0x05) Ext = None => Path destination unknown
