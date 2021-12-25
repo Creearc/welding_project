@@ -167,13 +167,13 @@ def server():
     elif msg == 'states':
       out = ''
       for element in states.keys():
-        out = '{}{}:{};'.format(element, states[element])
+        out = '{}{}${};'.format(element, states[element])
       out = out[:-1]
       socket.send_string(out)
     else:
       msg = msg.split(';')
       for element in msg:
-        tmp = element.split(':')
+        tmp = element.split('$')
         if tmp[1] == 'True':
           tmp[1] = True
         elif tmp[1] == 'False':
