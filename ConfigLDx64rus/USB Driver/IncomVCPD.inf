@@ -1,0 +1,56 @@
+;------------------------------------------------------------------------------
+;INCOM Virtual COM Port Driver
+;------------------------------------------------------------------------------
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%PRVDR%
+CatalogFile=IncomVCPD.cat
+DriverVer=01/11/2014,1.0.0
+
+[SourceDisksNames]
+[SourceDisksFiles]
+
+[Manufacturer]
+%MFGNAME%=DeviceList,NT,NTamd64
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+;------------------------------------------------------------------------------
+[DeviceList.NT]
+%DESCRIPTION%=DriverInstall,USB\VID_16D0&PID_0A6A&MI_00
+
+[DeviceList.NTamd64]
+%DESCRIPTION%=DriverInstall,USB\VID_16D0&PID_0A6A&MI_00
+
+[DriverInstall.NT]
+Include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NT.AddReg
+
+[DriverInstall.NT.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[DriverInstall.NT.Services]
+AddService=usbser, 0x00000002, DriverServiceInst
+
+[DriverServiceInst]
+DisplayName=%SERVICE%
+ServiceType 	= 1 	;SERVICE_KERNEL_DRIVER
+StartType 	= 3 	;SERVICE_DEMAND_START
+ErrorControl 	= 1 	;SERVICE_ERROR_NORMAL
+ServiceBinary= %12%\usbser.sys
+LoadOrderGroup = Base
+
+[FakeModemCopyFileSection]
+
+;------------------------------------------------------------------------------
+[Strings]
+PRVDR 		= "INCOM"
+MFGNAME 	= "INCOM"
+DESCRIPTION 	= "INCOM Virtual COM Port"
+SERVICE 	= "INCOM Virtual COM Port"
