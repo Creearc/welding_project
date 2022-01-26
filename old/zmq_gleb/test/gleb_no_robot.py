@@ -115,7 +115,6 @@ def process_2():
       print('File to delete {}'.format(file_to_delete))
       ftp.delete(file_to_delete)
       file_to_delete = None
-      ftp.close()
 
     old_state = state
     time.sleep(0.01)
