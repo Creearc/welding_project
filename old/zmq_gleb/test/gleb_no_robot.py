@@ -10,7 +10,7 @@ import fake_cip as cip
 import fake_ftp as ftp_functions
 
 data = dict()
-states = dict()
+states = dict() # (0Готов  1Печать 2Необходим файл)
 
 lock = threading.Lock()
 f = cip.Fanuc()
@@ -57,6 +57,8 @@ def process_2():
   old_state = 0
   
   while True:
+    states['z'] = 0
+    
     with lock:
       tmp = data.copy()
 
@@ -124,10 +126,16 @@ def server():
   
   context = zmq.Context()
   socket = context.socket(zmq.REP)
+  socket.RCVTIMEO = 1000
   socket.bind("tcp://127.0.0.1:5000")
    
   while True:
-    msg = socket.recv().decode()
+    try:
+      msg = socket.recv().decode()
+    except:
+      print('No connection to interface')
+      time.sleep(1.0)
+      continue
     print(msg)
       
     if msg == 'data':
