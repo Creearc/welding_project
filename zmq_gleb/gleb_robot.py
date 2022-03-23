@@ -7,8 +7,8 @@ import json
 import tkinter as tk
 import random
 
-import fake_cip as cip
-import fake_ftp as ftp_functions
+import cip2 as cip
+import ftp_functions as ftp_functions
 
 FILES_PATH = '/home/pi/files/'
 
@@ -30,14 +30,14 @@ class zmq_connection():
     return json.loads(socket.recv())
 
 def process_1():
-  f.r[33][0] = 1
+  f.write_r(33, 1)
   while True:
-    if f.r[33][0] == 3:
-      f.r[33][0] = 2
+    if f.read_r[33][0] == 3:
+      f.write_r[33][0] = 2
       print('Layer start')
       time.sleep(2.0)
       print('layer finish')
-      f.r[33][0] = 1
+      f.write_r(33, 1)
       
     
 
@@ -171,6 +171,5 @@ def server():
       
 
 if __name__ == '__main__':
-  threading.Thread(target=process_1, args=()).start()
   threading.Thread(target=process_2, args=()).start()
   threading.Thread(target=server, args=()).start()

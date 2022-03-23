@@ -9,7 +9,7 @@ import json
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
 #socket.RCVTIMEO = 1000
-socket.connect("tcp://127.0.0.1:5003")
+socket.connect("tcp://127.0.0.1:5000")
 lock = threading.Lock()
 
 files = ['W:/path/to/file/test_{}.tp'.format(i) for i in range(10)]
