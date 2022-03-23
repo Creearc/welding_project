@@ -23,7 +23,8 @@ master.execute(1,cst.READ_INPUT_REGISTERS, 100, 3)
 master.execute(1,cst.READ_HOLDING_REGISTERS, 100, 12)
 '''
 
-data = master.execute(1, cst.READ_DISCRETE_INPUTS, 0, 40100)
+#data = master.execute(1, cst.READ_DISCRETE_INPUTS, 0, 40100)
+data = master.execute(1, cst.READ_DISCRETE_INPUTS, 0, 10)
 print(data)
 
 
