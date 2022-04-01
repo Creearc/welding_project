@@ -42,7 +42,7 @@ def recognition(img, screen):
 
 if __name__ == '__main__':
   try:
-    pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract'
+    #pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract'
     pygame.init()
 
     W = int(1920 // 1.5)
