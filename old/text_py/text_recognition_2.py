@@ -5,7 +5,7 @@ def cleanup_text(text):
   return "".join([c if ord(c) < 128 else "" for c in text]).strip()
 
 
-langs = 'en, ru'.split(",")
+langs = 'en'.split(",")
 print("[INFO] OCR'ing with the following languages: {}".format(langs))
 
 image = cv2.imread('1.jpg')
