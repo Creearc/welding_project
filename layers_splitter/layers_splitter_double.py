@@ -24,7 +24,7 @@ def sort(names):
     
   return names
 
-path = fix_path('data')
+path = fix_path('data2')
 output_path = fix_path('output_data')
 
 if not os.path.exists(output_path):
