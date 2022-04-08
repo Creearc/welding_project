@@ -7,6 +7,7 @@ def fix_path(path):
     path = path.replace('\\', '/')
     if path[-1] != '/':
         path += '/'
+    print(path)
     return path
 
 
@@ -31,9 +32,9 @@ try:
     path = []
     use_distance_sensor = False
     
-    if len(sys.argv) == 3:
+    if len(sys.argv) >= 3:
         path = sys.argv[1]
-        output_path = sys.argv[3]
+        output_path = sys.argv[2]
     else:
         path = 'data'
         output_path = 'output_data'
@@ -57,7 +58,9 @@ try:
     files = sort(os.listdir(path))
     print(files)
 
-    for file in files:    
+    for file in files:
+        if file[-4:] == '.ini':
+            continue
         with open('{}{}'.format(path, file), 'r') as f:
             strings = f.readlines()
             
@@ -76,7 +79,6 @@ try:
         position_end = strings.index('/END\n')
 
         position_data += strings[position_start : position_end]
-
 
     old_z, z = None, None
     layer_number = 0
@@ -118,7 +120,6 @@ try:
         else:
             collected_data[layer_number].append(data)
         
-
     for layer in range(len(collected_data)):
         name = 'layer_{}'.format(layer + 1)
         with open('{}{}.ls'.format(output_path, name), 'w') as file:
@@ -155,8 +156,9 @@ try:
                     file.write('{}'.format(' '.join(data[1])))
 
             file.write('/END\n')
+
             
-    print(1)
+    print('1\nsucces')
     
 except Exception as e:
     print('{}\n{}'.format(0, e))
