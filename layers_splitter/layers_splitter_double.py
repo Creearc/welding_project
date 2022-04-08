@@ -24,7 +24,7 @@ def sort(names):
     
   return names
 
-path = fix_path('data2')
+path = fix_path('data')
 output_path = fix_path('output_data')
 
 if not os.path.exists(output_path):
@@ -36,8 +36,9 @@ commands_data = []
 position_data = []
 
 files = sort(os.listdir(path))
+print(files)
 
-for file in files:
+for file in files:    
     with open('{}{}'.format(path, file), 'r') as f:
         strings = f.readlines()
         
@@ -48,7 +49,7 @@ for file in files:
         head_data = strings[head_start : head_end]
 
     commands_start = strings.index('/MN\n') + 1
-    commands_end = strings.index('/POS\n') - 1
+    commands_end = strings.index('/POS\n') 
 
     commands_data += strings[commands_start : commands_end]
 
@@ -67,13 +68,14 @@ collected_data.append([])
 
 hights = []
 
+position_start = 0
+
 for data in commands_data:
-    data_parts = data.split()
+    data_parts = data.split()   
     if len(data_parts) > 3:
-        position_start = position_data.index('{} {{\n'.format(data_parts[2])) + 1
+        position_start = position_data.index('{} {{\n'.format(data_parts[2]), position_start) + 1
         position_end = position_data.index('};\n', position_start) + 1
-        position_parts = position_data[position_start : position_end]
-        
+        position_parts = position_data[position_start : position_end]        
 
         z = position_parts[2].split()[10]
         if old_z is None:
@@ -98,7 +100,6 @@ for data in commands_data:
         collected_data[layer_number].append(data)
     
 
-
 measurements = True 
 
 for layer in range(len(collected_data)):
@@ -108,7 +109,7 @@ for layer in range(len(collected_data)):
         head_data[4] = 'LINE_COUNT = {};\n'.format(len(collected_data[layer]))
         file.write(''.join(head_data))
 
-        file.write(':SR[30]={};\n'.format(hights[layer]))
+        file.write(':R[35]={};\n'.format(hights[layer]))
         file.write(':R[34]=0;\n')
 
         for data in collected_data[layer]:

@@ -1,4 +1,4 @@
-/PROG layer_5
+/PROG layer_18
 /ATTR
 OWNER       = MNEDITOR;
 CREATE      = DATE 100-11-20  TIME 09:43:21;
@@ -14,7 +14,7 @@ TCD:  STACK_SIZE    = 0,
 DEFAULT_GROUP   = 1,1,*,*,*;
 CONTROL_CODE    = 00000000 00000000;
 /MN
-:R[35]=66.5;
+:R[35]=109.0;
 :R[34]=0;
 1: L P[1] 240cm/min CNT100 COORD ;
 2: L P[2] 240cm/min CNT100 COORD ;
@@ -202,7 +202,7 @@ CONTROL_CODE    = 00000000 00000000;
 P[1] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -120.0 mm, Z = 66.5 mm,
+       X = 45.4 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -211,7 +211,7 @@ P[1] {
 P[2] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.8 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.8 mm, Y = -26.2 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -220,7 +220,7 @@ P[2] {
 P[3] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.8 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.8 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -229,7 +229,7 @@ P[3] {
 P[4] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.8 mm, Y = -26.2 mm, Z = 66.5 mm,
+       X = 48.8 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -238,7 +238,7 @@ P[4] {
 P[5] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.8 mm, Y = -26.2 mm, Z = 66.5 mm,
+       X = 48.8 mm, Y = -26.2 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -247,7 +247,7 @@ P[5] {
 P[6] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.8 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.8 mm, Y = -26.2 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -256,7 +256,7 @@ P[6] {
 P[7] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 45.4 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -120.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -265,7 +265,7 @@ P[7] {
 P[8] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -120.0 mm, Z = 66.5 mm,
+       X = -45.4 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -274,7 +274,7 @@ P[8] {
 P[9] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -116.0 mm, Z = 66.5 mm,
+       X = -40.7 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -283,7 +283,7 @@ P[9] {
 P[10] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 40.7 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -116.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -292,7 +292,7 @@ P[10] {
 P[11] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 36.0 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -111.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -301,7 +301,7 @@ P[11] {
 P[12] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -111.0 mm, Z = 66.5 mm,
+       X = -36.0 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -310,7 +310,7 @@ P[12] {
 P[13] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -106.0 mm, Z = 66.5 mm,
+       X = -31.3 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -319,7 +319,7 @@ P[13] {
 P[14] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 31.3 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -106.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -328,7 +328,7 @@ P[14] {
 P[15] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 26.6 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -102.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -337,7 +337,7 @@ P[15] {
 P[16] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -102.0 mm, Z = 66.5 mm,
+       X = -26.6 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -346,7 +346,7 @@ P[16] {
 P[17] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -96.9 mm, Z = 66.5 mm,
+       X = -21.9 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -355,7 +355,7 @@ P[17] {
 P[18] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 21.9 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -96.9 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -364,7 +364,7 @@ P[18] {
 P[19] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 17.2 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -92.2 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -373,7 +373,7 @@ P[19] {
 P[20] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -92.2 mm, Z = 66.5 mm,
+       X = -17.2 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -382,7 +382,7 @@ P[20] {
 P[21] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -87.5 mm, Z = 66.5 mm,
+       X = -12.5 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -391,7 +391,7 @@ P[21] {
 P[22] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 12.5 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -87.5 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -400,7 +400,7 @@ P[22] {
 P[23] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 7.76 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -82.8 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -409,7 +409,7 @@ P[23] {
 P[24] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -82.8 mm, Z = 66.5 mm,
+       X = -7.76 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -418,7 +418,7 @@ P[24] {
 P[25] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -78.1 mm, Z = 66.5 mm,
+       X = -3.06 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -427,7 +427,7 @@ P[25] {
 P[26] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 3.06 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -78.1 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -436,7 +436,7 @@ P[26] {
 P[27] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -1.64 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -73.4 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -445,7 +445,7 @@ P[27] {
 P[28] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -73.4 mm, Z = 66.5 mm,
+       X = 1.64 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -454,7 +454,7 @@ P[28] {
 P[29] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -68.7 mm, Z = 66.5 mm,
+       X = 6.34 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -463,7 +463,7 @@ P[29] {
 P[30] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -6.34 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -68.7 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -472,7 +472,7 @@ P[30] {
 P[31] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -11.0 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -64.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -481,7 +481,7 @@ P[31] {
 P[32] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -64.0 mm, Z = 66.5 mm,
+       X = 11.0 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -490,7 +490,7 @@ P[32] {
 P[33] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -59.3 mm, Z = 66.5 mm,
+       X = 15.7 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -499,7 +499,7 @@ P[33] {
 P[34] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -15.7 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -59.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -508,7 +508,7 @@ P[34] {
 P[35] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -20.4 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -54.6 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -517,7 +517,7 @@ P[35] {
 P[36] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -54.6 mm, Z = 66.5 mm,
+       X = 20.4 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -526,7 +526,7 @@ P[36] {
 P[37] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -49.8 mm, Z = 66.5 mm,
+       X = 25.2 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -535,7 +535,7 @@ P[37] {
 P[38] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -25.2 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -49.8 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -544,7 +544,7 @@ P[38] {
 P[39] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -29.9 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -45.1 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -553,7 +553,7 @@ P[39] {
 P[40] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -45.1 mm, Z = 66.5 mm,
+       X = 29.9 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -562,7 +562,7 @@ P[40] {
 P[41] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -40.4 mm, Z = 66.5 mm,
+       X = 34.6 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -571,7 +571,7 @@ P[41] {
 P[42] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -34.6 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -40.4 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -580,7 +580,7 @@ P[42] {
 P[43] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -39.3 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -35.7 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -589,7 +589,7 @@ P[43] {
 P[44] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -35.7 mm, Z = 66.5 mm,
+       X = 39.3 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -598,7 +598,7 @@ P[44] {
 P[45] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -31.0 mm, Z = 66.5 mm,
+       X = 44.0 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -607,7 +607,7 @@ P[45] {
 P[46] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -44.0 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -31.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -616,7 +616,7 @@ P[46] {
 P[47] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -124.0 mm, Z = 66.5 mm,
+       X = -48.7 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -625,7 +625,7 @@ P[47] {
 P[48] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 48.7 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -124.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -634,7 +634,7 @@ P[48] {
 P[49] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 44.0 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -119.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -643,7 +643,7 @@ P[49] {
 P[50] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -119.0 mm, Z = 66.5 mm,
+       X = -44.0 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -652,7 +652,7 @@ P[50] {
 P[51] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -114.0 mm, Z = 66.5 mm,
+       X = -39.3 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -661,7 +661,7 @@ P[51] {
 P[52] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 39.3 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -114.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -670,7 +670,7 @@ P[52] {
 P[53] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 34.6 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -110.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -679,7 +679,7 @@ P[53] {
 P[54] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -110.0 mm, Z = 66.5 mm,
+       X = -34.6 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -688,7 +688,7 @@ P[54] {
 P[55] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -105.0 mm, Z = 66.5 mm,
+       X = -29.9 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -697,7 +697,7 @@ P[55] {
 P[56] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 29.9 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -105.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -706,7 +706,7 @@ P[56] {
 P[57] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 25.2 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -100.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -715,7 +715,7 @@ P[57] {
 P[58] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -100.0 mm, Z = 66.5 mm,
+       X = -25.2 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -724,7 +724,7 @@ P[58] {
 P[59] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -95.4 mm, Z = 66.5 mm,
+       X = -20.4 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -733,7 +733,7 @@ P[59] {
 P[60] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 20.4 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -95.4 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -742,7 +742,7 @@ P[60] {
 P[61] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 15.7 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -90.7 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -751,7 +751,7 @@ P[61] {
 P[62] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -90.7 mm, Z = 66.5 mm,
+       X = -15.7 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -760,7 +760,7 @@ P[62] {
 P[63] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -86.0 mm, Z = 66.5 mm,
+       X = -11.0 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -769,7 +769,7 @@ P[63] {
 P[64] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 11.0 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -86.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -778,7 +778,7 @@ P[64] {
 P[65] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 6.34 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -81.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -787,7 +787,7 @@ P[65] {
 P[66] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -81.3 mm, Z = 66.5 mm,
+       X = -6.34 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -796,7 +796,7 @@ P[66] {
 P[67] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -76.6 mm, Z = 66.5 mm,
+       X = -1.64 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -805,7 +805,7 @@ P[67] {
 P[68] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = 1.64 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -76.6 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -814,7 +814,7 @@ P[68] {
 P[69] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -3.06 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -71.9 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -823,7 +823,7 @@ P[69] {
 P[70] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -71.9 mm, Z = 66.5 mm,
+       X = 3.06 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -832,7 +832,7 @@ P[70] {
 P[71] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -67.2 mm, Z = 66.5 mm,
+       X = 7.76 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -841,7 +841,7 @@ P[71] {
 P[72] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -7.76 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -67.2 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -850,7 +850,7 @@ P[72] {
 P[73] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -12.5 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -62.5 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -859,7 +859,7 @@ P[73] {
 P[74] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -62.5 mm, Z = 66.5 mm,
+       X = 12.5 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -868,7 +868,7 @@ P[74] {
 P[75] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -57.8 mm, Z = 66.5 mm,
+       X = 17.2 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -877,7 +877,7 @@ P[75] {
 P[76] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -17.2 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -57.8 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -886,7 +886,7 @@ P[76] {
 P[77] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -21.9 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -53.1 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -895,7 +895,7 @@ P[77] {
 P[78] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -53.1 mm, Z = 66.5 mm,
+       X = 21.9 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -904,7 +904,7 @@ P[78] {
 P[79] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -48.4 mm, Z = 66.5 mm,
+       X = 26.6 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -913,7 +913,7 @@ P[79] {
 P[80] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -26.6 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -48.4 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -922,7 +922,7 @@ P[80] {
 P[81] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -31.3 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -43.7 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -931,7 +931,7 @@ P[81] {
 P[82] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -43.7 mm, Z = 66.5 mm,
+       X = 31.3 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -940,7 +940,7 @@ P[82] {
 P[83] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -39.0 mm, Z = 66.5 mm,
+       X = 36.0 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -949,7 +949,7 @@ P[83] {
 P[84] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -36.0 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -39.0 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -958,7 +958,7 @@ P[84] {
 P[85] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -40.7 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -34.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -967,7 +967,7 @@ P[85] {
 P[86] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -34.3 mm, Z = 66.5 mm,
+       X = 40.7 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -976,7 +976,7 @@ P[86] {
 P[87] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -48.7 mm, Y = -29.6 mm, Z = 66.5 mm,
+       X = 45.4 mm, Y = -26.3 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
@@ -985,7 +985,7 @@ P[87] {
 P[88] {
     GP1:
         UF : 6, UT : 5,     CONFIG: 'N U T, 0, 0, 0',
-       X = -45.4 mm, Y = -26.3 mm, Z = 66.5 mm,
+       X = 48.7 mm, Y = -29.6 mm, Z = 109.0 mm,
        W = 0.0 deg, P = 0.0 deg, R = 0.0 deg
     GP2:
         UF : 1, UT : 2,
