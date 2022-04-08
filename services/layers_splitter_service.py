@@ -59,7 +59,7 @@ try:
     print(files)
 
     for file in files:
-        if file[-4:] == '.ini':
+        if file[-3:] != '.ls':
             continue
         with open('{}{}'.format(path, file), 'r') as f:
             strings = f.readlines()

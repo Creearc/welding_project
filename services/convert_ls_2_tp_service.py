@@ -11,7 +11,7 @@ Support=C:\\Users\\user\\Documents\\My Workcells\\WeldPRO1\\Robot_1\\support
 Output=C:\\Users\\user\\Documents\\My Workcells\\WeldPRO1\\Robot_1\\output''')
   f.close()
 
-def convert_ls_to_tp(path, otput_folder):
+def convert_ls_to_tp(path, output_folder):
   make_ini(path)
   files = os.listdir(path)
   for file in files:
@@ -19,7 +19,7 @@ def convert_ls_to_tp(path, otput_folder):
       os.system('cmd /c "cd {} & maketp {}"'.format(path, file))
 
       filename_path = '{}/{}'.format(path, file.replace('.ls', '.tp'))
-      output_file_path = '{}/{}'.format(otput_folder, file.replace('.ls', '.tp'))
+      output_file_path = '{}/{}'.format(output_folder, file.replace('.ls', '.tp'))
       os.replace(filename_path, output_file_path)
 
 def convert_ls_to_tp_single(way):
@@ -37,15 +37,18 @@ try:
     path ='out_test_2'
 
   if os.path.isdir(path):
-    otput_folder = path.split('/')
-    first = '/'.join(otput_folder[:-1])
-    last = '{}_TP'.format(otput_folder[-1])
-    otput_folder  = '/'.join([first, last])
+    if len(sys.argv) > 2:
+      output_folder = sys.argv[2].replace('\\', '/')
+    else:
+      output_folder = path.split('/')
+      first = '/'.join(output_folder[:-1])
+      last = '{}_TP'.format(output_folder[-1])
+      output_folder  = '/'.join([first, last])
 
-    if not os.path.isdir(otput_folder):
-      os.mkdir(otput_folder)
+    if not os.path.isdir(output_folder):
+      os.mkdir(output_folder)
 
-    convert_ls_to_tp(path, otput_folder)
+    convert_ls_to_tp(path, output_folder)
 
   else:
     convert_ls_to_tp_single(path)

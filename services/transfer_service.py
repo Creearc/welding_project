@@ -89,15 +89,13 @@ def main():
                 f.write_r(33, 99)
               else:
                 f.write_r(33, 98)
-                
 
         elif state == 0:
           states['state'] = 0
+          
         else:
-          if is_start:
-            states['state'] = 1    
-          else:
-            states['state'] = 1
+          states['state'] = 1    
+
 
         if file_to_delete != None and time.time() - file_to_delete_time > 5.0:
           ftp = ftp_functions.Ftp_connection()
