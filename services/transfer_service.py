@@ -32,7 +32,7 @@ def main():
   is_last_file = False
   last_file = None
 
-  #ftp = ftp_functions.Ftp_connection()
+  ftp = ftp_functions.Ftp_connection()
   file_name = None
   file_to_delete = None
   file_to_delete_time = 0.0
