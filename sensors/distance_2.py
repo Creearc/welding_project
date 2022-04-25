@@ -1,6 +1,6 @@
 from pymodbus.client.sync import ModbusTcpClient
 
-client = ModbusTcpClient('192.168.1.103', 502)
+client = ModbusTcpClient('192.168.0.105', 502)
 client.connect()
 
 data = client.read_holding_registers(0, 32, unit=1)
