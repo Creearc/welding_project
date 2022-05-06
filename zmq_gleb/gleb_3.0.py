@@ -63,7 +63,7 @@ def distance_thread():
 
   arduino = Serial(port = 'COM3', baudrate = 9600, timeout = 2)
   open_ = "open" + '\n'
-  close_ = "close" + '\оn'
+  close_ = "close" + '\n'
 
   activate_sensor = False
   old_activate_sensor = False
@@ -71,7 +71,7 @@ def distance_thread():
   while True:
     try:
         old_activate_sensor = activate_sensor
-        activate_sensor = int(f.read_r(33)[1][0]) == 1
+        activate_sensor = int(f.read_r(34)[1][0]) == 1
 
         if old_activate_sensor != activate_sensor:
             arduino.write(open_.encode() if activate_sensor else close_.encode())

@@ -2,6 +2,7 @@ import sys
 import os
 
 COMMAND = '''{number}: L P[{position_index}] {speed} CNT100 COORD PTH  ;'''
+DISTANCE_OFFSET = (-13, -70)
 
 def fix_path(path):
     path = path.replace('\\', '/')
@@ -145,7 +146,7 @@ try:
                         data_parts = data[0].copy()
                         line_number = int(data_parts[0][:-1])
                         data_parts[0] = '{}:'.format(lines_number + line_number)
-                        data_parts[3] = '600cm/min'
+                        data_parts[3] = '800cm/min'
                         file.write('{}\n'.format(' '.join(data_parts)))
                         
             file.write(':R[34]=0;\n')     

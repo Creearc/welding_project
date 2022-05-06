@@ -116,7 +116,7 @@ def main():
 
 
 def distance_thread():
-  global data, states, lock
+  global states, lock
 
   f = cip.Fanuc()
 
@@ -126,9 +126,9 @@ def distance_thread():
   data = client.read_holding_registers(0, 32, unit=1)
   k = data.registers[5] / data.registers[31]
 
-  arduino = Serial(port = 'COM3', baudrate = 9600, timeout = 2)
+  arduino = Serial(port = '/dev/ttyUSB0', baudrate = 9600, timeout = 2)
   open_ = "open" + '\n'
-  close_ = "close" + '\оn'
+  close_ = "close" + '\n'
 
   activate_sensor = False
   old_activate_sensor = False
@@ -136,19 +136,22 @@ def distance_thread():
   while True:
     try:
         old_activate_sensor = activate_sensor
-        activate_sensor = int(f.read_r(33)[1][0]) == 1
+        activate_sensor = int(f.read_r(34)[1][0]) == 1
 
         if old_activate_sensor != activate_sensor:
+            print(activate_sensor)
             arduino.write(open_.encode() if activate_sensor else close_.encode())
             time.sleep(1.0)
 
         if activate_sensor:
             data = client.read_holding_registers(6, 7, unit=1)
-            msg = int(str(data.registers[0] * k).encode('utf-8'))
-            print(msg)
+            msg = float(str(data.registers[0] * k).encode('utf-8'))
+            #print(msg)
             states['z'] = msg
+        else:
+            states['z'] = 0
 
-          time.sleep(0.01)
+        time.sleep(0.01)
             
     except Exception as e:
         print(e)
