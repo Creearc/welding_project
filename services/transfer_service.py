@@ -148,6 +148,8 @@ def distance_thread():
             msg = float(str(data.registers[0] * k).encode('utf-8'))
             #print(msg)
             states['z'] = msg
+            #states['x'] = float(f.read_sr(23)[1].decode().strip())
+            #states['y'] = float(f.read_sr(24)[1].decode().strip())
         else:
             states['z'] = 0
 
