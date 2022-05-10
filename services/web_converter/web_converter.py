@@ -30,7 +30,7 @@ def upload_file():
             path_arg, name = functions.unzip(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             split = False
             if request.form['action'] in {'Разбить на слои','Разбить на слои и конвертировать в TP'}:
-                output_path = functions.split_layers(path_arg, '')
+                output_path = functions.split_layers(path_arg, 'd')
                 split = True
             if request.form['action'] in {'Конвертировать в TP','Разбить на слои и конвертировать в TP'}:
                 output_path = functions.convert(path_arg, split)

@@ -2,7 +2,6 @@ import sys
 import os
 
 COMMAND = '''{number}: L P[{position_index}] {speed} CNT100 COORD PTH  ;'''
-DISTANCE_OFFSET = (-13, -70)
 
 def fix_path(path):
     path = path.replace('\\', '/')
@@ -32,13 +31,17 @@ def sort(names):
 try:
     path = []
     use_distance_sensor = False
+
+    path = 'data'
+    output_path = 'output_data'
+
+    if len(sys.argv) > 1:
+        path = sys.argv[1].replace('\\', '/')
     
-    if len(sys.argv) >= 3:
+    elif len(sys.argv) >= 3:
         path = sys.argv[1]
         output_path = sys.argv[2]
-    else:
-        path = 'data'
-        output_path = 'output_data'
+
 
     if len(sys.argv) == 4:
         if sys.argv[3] == 'd':
@@ -88,6 +91,9 @@ try:
     collected_data = []
     collected_data.append([])
 
+    collected_data_ds = []
+    collected_data_ds.append([])
+
     hights = []
 
     position_start = 0
@@ -112,12 +118,26 @@ try:
 
             data_parts[0] = '{}:'.format(line_number)
             data_parts[2] = 'P[{}]'.format(line_number)
+            if use_distance_sensor:
+                position_parts_distance = position_parts.copy()
+                coords = position_parts_distance[2].split()
+                coords[2] = str(round(float(coords[2]) + 17, 2))
+                coords[6] = str(round(float(coords[6]) + 71, 2))
+                position_parts_distance[2] = ' '.join(coords)
+            
             position_parts = ['P[{}] {{\n'.format(line_number)] + position_parts
+            
+            if use_distance_sensor:
+                position_parts_distance = ['P[{}] {{\n'.format(line_number)] + position_parts_distance
+                collected_data[layer_number].append([data_parts,
+                                                 position_parts,
+                                                     position_parts_distance])
+            else:
+                collected_data[layer_number].append([data_parts,
+                                                 position_parts])
 
             line_number += 1
-
-            collected_data[layer_number].append([data_parts,
-                                                 position_parts])
+                
         else:
             collected_data[layer_number].append(data)
         
@@ -143,9 +163,15 @@ try:
                 lines_number = len(collected_data[layer])
                 for data in collected_data[layer]:
                     if isinstance(data, list):
+                        file.write(':SR[23]=$SCR_GRP[1].$MCH_POS_X;\n')
+                        file.write(':SR[24]=$SCR_GRP[1].$MCH_POS_Y;\n')
+
                         data_parts = data[0].copy()
                         line_number = int(data_parts[0][:-1])
+                        data[2][0] = 'P[{}] {{\n'.format(lines_number + line_number)
+
                         data_parts[0] = '{}:'.format(lines_number + line_number)
+                        data_parts[2] = 'P[{}]'.format(lines_number + line_number)
                         data_parts[3] = '800cm/min'
                         file.write('{}\n'.format(' '.join(data_parts)))
                         
@@ -155,6 +181,9 @@ try:
             for data in collected_data[layer]:
                 if isinstance(data, list):
                     file.write('{}'.format(' '.join(data[1])))
+                    if use_distance_sensor:
+                        file.write('{}'.format(' '.join(data[2])))
+
 
             file.write('/END\n')
 

@@ -3,8 +3,8 @@ import zipfile
 import subprocess
 import time
 
-splitter_path = 'A:/Projects/welding_project/services/layers_splitter_service.py'
-converter_path = 'A:/Projects/welding_project/services/convert_ls_2_tp_service.py'
+splitter_path = '../layers_splitter_service.py'
+converter_path = '../convert_ls_2_tp_service.py'
 
 def get_paths(path):
     disk = path[:2]
@@ -21,7 +21,7 @@ def run_script(disk, path, programm, args):
 
     result = out.decode('cp1251', errors='surrogateescape')
     result = result.split('\n')
-    print('[{}]\nCode:\n{}\nOut:\n{}\n[end]'.format(programm, result[-3], result[-2]))
+    #print('[{}]\nCode:\n{}\nOut:\n{}\n[end]'.format(programm, result[-3], result[-2]))
     return int(result[-3])
     
 
