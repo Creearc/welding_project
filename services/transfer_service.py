@@ -20,6 +20,7 @@ FILES_PATH = '/home/pi/files/'
 data = dict()
 states = dict() # (0Готов  1Печать 2Необходим файл)
 states['state'] = 0
+states['z'] = 0
 
 lock = threading.Lock()
 f = cip.Fanuc()
@@ -118,45 +119,48 @@ def main():
 def distance_thread():
   global states, lock
 
-  f = cip.Fanuc()
-
-  client = ModbusTcpClient('192.168.0.105', 502)
-  client.connect()
-
-  data = client.read_holding_registers(0, 32, unit=1)
-  k = data.registers[5] / data.registers[31]
-
-  arduino = Serial(port = '/dev/ttyUSB0', baudrate = 9600, timeout = 2)
-  open_ = "open" + '\n'
-  close_ = "close" + '\n'
-
-  activate_sensor = False
-  old_activate_sensor = False
-
   while True:
     try:
-        old_activate_sensor = activate_sensor
-        activate_sensor = int(f.read_r(34)[1][0]) == 1
 
-        if old_activate_sensor != activate_sensor:
-            print(activate_sensor)
-            arduino.write(open_.encode() if activate_sensor else close_.encode())
-            time.sleep(1.0)
+      f = cip.Fanuc()
 
-        if activate_sensor:
-            data = client.read_holding_registers(6, 7, unit=1)
-            msg = float(str(data.registers[0] * k).encode('utf-8'))
-            #print(msg)
-            states['z'] = msg
-            #states['x'] = float(f.read_sr(23)[1].decode().strip())
-            #states['y'] = float(f.read_sr(24)[1].decode().strip())
-        else:
-            states['z'] = 0
+      client = ModbusTcpClient('192.168.0.105', 502)
+      client.connect()
 
-        time.sleep(0.01)
-            
+      data = client.read_holding_registers(0, 32, unit=1)
+      k = data.registers[5] / data.registers[31]
+
+      arduino = Serial(port = '/dev/ttyUSB0', baudrate = 9600, timeout = 2)
+      open_ = "open" + '\n'
+      close_ = "close" + '\n'
+
+      activate_sensor = False
+      old_activate_sensor = False
+
+      while True:
+            old_activate_sensor = activate_sensor
+            activate_sensor = int(f.read_r(34)[1][0]) == 1
+
+            if old_activate_sensor != activate_sensor:
+                print(activate_sensor)
+                arduino.write(open_.encode() if activate_sensor else close_.encode())
+                time.sleep(1.0)
+
+            if activate_sensor:
+                data = client.read_holding_registers(6, 7, unit=1)
+                msg = float(str(data.registers[0] * k).encode('utf-8'))
+                #print(msg)
+                states['z'] = msg
+                #states['x'] = float(f.read_sr(23)[1].decode().strip())
+                #states['y'] = float(f.read_sr(24)[1].decode().strip())
+            else:
+                states['z'] = 0
+
+            time.sleep(0.01)
+              
     except Exception as e:
-        print(e)
+          print(e)
+          time.sleep(5.0)
   
   
 
