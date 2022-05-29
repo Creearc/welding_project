@@ -36,6 +36,7 @@ def main():
   is_last_file = False
   last_file = None
 
+  f = cip.Fanuc()
   ftp = ftp_functions.Ftp_connection()
   file_name = None
   file_to_delete = None
@@ -65,6 +66,10 @@ def main():
       s = ''.join(['{}: {}\n'.format(key, value) for key, value in tmp.items()])
 
     try:
+        if states['state'] == -1:
+          ftp = ftp_functions.Ftp_connection()
+          f = cip.Fanuc()
+          
         state = int(f.read_r(33)[1][0]) # try except for robot off
     
         if state == 1:
@@ -110,7 +115,7 @@ def main():
         old_state = state
 
     except Exception as e:
-        print(e)
+        print('ERROR -> ', e)
         states['state'] = -1
  
     time.sleep(0.01)
