@@ -9,8 +9,8 @@ import random
 path = sys.path[0].replace('\\', '/')
 sys.path.insert(0, '{}/modules'.format(path))
 
-import cip 
-import ftp_functions
+import fake_cip as cip 
+import fake_ftp as ftp_functions
 
 FILES_PATH = '/home/pi/files/'
 
@@ -18,20 +18,44 @@ data = dict()
 states = dict()
 states['state'] = -1
 states['z'] = 0
+ip = '192.168.0.101'
 
 lock = threading.Lock()
-f = cip.Fanuc()
+debug = not True
+
+
+if debug:
+  f = cip.Fanuc(ip)
+  ftp = ftp_functions.Ftp_connection(ip)
+  states['state'] = 0
+
+def process_1():
+  global f, ip
+  f.r[33][0] = 1
+  print('GOGOGOGOGOGOOG')
+  while True:
+    if f.r[33][0] == 3:
+      f.r[33][0] = 2
+      print('Layer start')
+      time.sleep(2.0)
+      print('layer finish')
+      f.r[33][0] = 1
 
 
 def main():
-  global data, states, lock
+  global data, states, ip, lock
+  if debug:
+    global f, ftp
+    
   is_start = False
   current_file_path = None
-  ip = '192.168.0.101'
+  state = 0
+  
 
   file_name = None
   file_to_delete = None
   file_to_delete_time = 0.0
+  last_file = None
 
   layer_finish_time = 0
 
@@ -45,7 +69,9 @@ def main():
           f = cip.Fanuc(ip)
           print('Connected successfully!')
           
+        old_state = state
         state = int(f.read_r(33)[1][0])
+        
     
         if state == 1:
           states['state'] = 0
@@ -79,7 +105,7 @@ def main():
           ftp.delete(file_to_delete)
           file_to_delete = None
 
-        old_state = state
+        
 
     except Exception as e:
         print('ERROR -> ', e)
@@ -148,6 +174,8 @@ def server():
 
 
 if __name__ == '__main__':
+  if debug:
+    threading.Thread(target=process_1, args=()).start()
   threading.Thread(target=main, args=()).start()
   threading.Thread(target=server, args=()).start()
 

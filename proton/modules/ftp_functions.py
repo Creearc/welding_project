@@ -3,8 +3,8 @@ from ftplib import FTP
 class Ftp_connection():
   def __init__(self, ip='192.168.0.101', port=21):
     self.ftp = FTP()
-    self.ftp.connect(ip, port)
-    self.ftp.login(user='', passwd='', timeout=2)
+    self.ftp.connect(ip, port, timeout=2)
+    self.ftp.login(user='', passwd='')
     
   def send(self, file_path, output_file):
 ##    try:

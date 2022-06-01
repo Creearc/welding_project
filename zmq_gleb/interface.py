@@ -19,7 +19,8 @@ data = {'current_file_path' : files[0],
           'stop_after_layer' : False,
           'is_continuous' : False, 
           'next_file_path' : None,
-          'is_last_file' : False}
+          'is_last_file' : False,
+        'ip' : '123.123.123.123'}
 
 def send(data):
   out = ''
