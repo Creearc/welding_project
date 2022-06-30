@@ -1,3 +1,4 @@
+ 
 import sys
 import os
 
@@ -35,12 +36,14 @@ try:
     path = 'data'
     output_path = 'output_data'
 
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 2:
         path = sys.argv[1].replace('\\', '/')
+        print(path)
     
     elif len(sys.argv) >= 3:
         path = sys.argv[1]
         output_path = sys.argv[2]
+        print(output_path)
 
 
     if len(sys.argv) == 4:
@@ -121,8 +124,8 @@ try:
             if use_distance_sensor:
                 position_parts_distance = position_parts.copy()
                 coords = position_parts_distance[2].split()
-                coords[2] = str(round(float(coords[2]) + 17, 2))
-                coords[6] = str(round(float(coords[6]) + 71, 2))
+                coords[2] = str(round(float(coords[2]) - 111, 2)) ###############################
+                coords[6] = str(round(float(coords[6]) + 13, 2))  ###############################
                 position_parts_distance[2] = ' '.join(coords)
             
             position_parts = ['P[{}] {{\n'.format(line_number)] + position_parts
@@ -140,7 +143,7 @@ try:
                 
         else:
             collected_data[layer_number].append(data)
-
+        
     output_folder = output_path.split('/')[-2] if output_path.split('/')[-1] == '' else output_path.split('/')[-1] 
     for layer in range(len(collected_data)):
         name = '{}_{}'.format(output_folder, layer + 1)
@@ -158,14 +161,16 @@ try:
                 else:
                     file.write(data)
                     
-            file.write(':R[34]=1;\n')
+            
             
             if use_distance_sensor:
                 lines_number = len(collected_data[layer])
-                for data in collected_data[layer]:
+                for i, data in enumerate(collected_data[layer]):
+                    if i == 1:
+                        file.write(':R[34]=1;\n')
                     if isinstance(data, list):
-                        file.write(':SR[23]=$SCR_GRP[1].$MCH_POS_X;\n')
-                        file.write(':SR[24]=$SCR_GRP[1].$MCH_POS_Y;\n')
+                        #file.write(':SR[23]=$SCR_GRP[1].$MCH_POS_X;\n')
+                        #file.write(':SR[24]=$SCR_GRP[1].$MCH_POS_Y;\n')
 
                         data_parts = data[0].copy()
                         line_number = int(data_parts[0][:-1])
@@ -173,7 +178,11 @@ try:
 
                         data_parts[0] = '{}:'.format(lines_number + line_number)
                         data_parts[2] = 'P[{}]'.format(lines_number + line_number)
-                        data_parts[3] = '800cm/min'
+                        if i == 0:
+                            data_parts[3] = '300cm/min'
+                        else:
+                            data_parts[3] = '600cm/min'
+                            
                         file.write('{}\n'.format(' '.join(data_parts)))
                         
             file.write(':R[34]=0;\n')     
@@ -196,3 +205,4 @@ except Exception as e:
     print('{}\n{}'.format(0, e))
 
     
+
