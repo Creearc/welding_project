@@ -3,6 +3,8 @@ import sys
 import os
 
 COMMAND = '''{number}: L P[{position_index}] {speed} CNT100 COORD PTH  ;'''
+skip_start = 5
+skip_end = 5
 
 def fix_path(path):
     path = path.replace('\\', '/')
@@ -166,8 +168,11 @@ try:
             if use_distance_sensor:
                 lines_number = len(collected_data[layer])
                 for i, data in enumerate(collected_data[layer]):
-                    if i == 1:
+                    
+                    if i == skip_start + 1:
                         file.write(':R[34]=1;\n')
+                    elif i == lines_number - skip_end - 1:
+                        file.write(':R[34]=0;\n')
                     if isinstance(data, list):
                         #file.write(':SR[23]=$SCR_GRP[1].$MCH_POS_X;\n')
                         #file.write(':SR[24]=$SCR_GRP[1].$MCH_POS_Y;\n')
@@ -179,16 +184,16 @@ try:
                         data_parts[0] = '{}:'.format(lines_number + line_number)
                         data_parts[2] = 'P[{}]'.format(lines_number + line_number)
                         if i == 0:
-                            data_parts[3] = '300cm/min'
+                            data_parts[3] = '50cm/min'
                         else:
                             data_parts[3] = '600cm/min'
                             
                         file.write('{}\n'.format(' '.join(data_parts)))
                         
-            file.write(':R[34]=0;\n')     
+                 
             file.write('/POS\n')
 
-            for data in collected_data[layer]:
+            for i, data in enumerate(collected_data[layer]):
                 if isinstance(data, list):
                     file.write('{}'.format(' '.join(data[1])))
                     if use_distance_sensor:
