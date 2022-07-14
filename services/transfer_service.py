@@ -27,7 +27,7 @@ f = cip.Fanuc()
 
 
 def main():
-  global data, states, lock
+  global data, states, lock, f
   is_start = False
   stop_after_layer = False
   is_continuous = False
@@ -122,12 +122,11 @@ def main():
 
 
 def distance_thread():
-  global states, lock
+  global states, lock, f
 
   while True:
     try:
 
-      f = cip.Fanuc()
 
       client = ModbusTcpClient('192.168.0.105', 502)
       client.connect()
@@ -149,12 +148,15 @@ def distance_thread():
             if old_activate_sensor != activate_sensor:
                 print(activate_sensor)
                 arduino.write(open_.encode() if activate_sensor else close_.encode())
+                robot_z = f.read_sr(21)[1].decode()
+                robot_z = float(robot_z[1:].replace('\x00', ''))
+                print(robot_z)
                 time.sleep(1.0)
 
             if activate_sensor:
                 data = client.read_holding_registers(6, 7, unit=1)
-                msg = float(str(data.registers[0] * k).encode('utf-8'))
-                #print(msg)
+                msg =  robot_z - float(str(data.registers[0] * k).encode('utf-8'))
+                print(msg)
                 states['z'] = msg
                 #states['x'] = float(f.read_sr(23)[1].decode().strip())
                 #states['y'] = float(f.read_sr(24)[1].decode().strip())
