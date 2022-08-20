@@ -14,13 +14,13 @@ for j in range(len(fl)):
   print(fl[j])
 
   ftp = FTP()
-  HOSTS = ['192.168.8.100']
+  HOSTS = ['192.168.8.101']
   PORT = 21
   for i in range(len(HOSTS)):
     ftp.connect(HOSTS[i], PORT)
     print(ftp.login(user='pi', passwd='8'))
 
-    ftp.cwd('services')
+    ftp.cwd('ip_camera')
 
     with open(fl[j], 'rb') as f:
         ftp.storbinary('STOR ' + fl[j].split('\\')[-1], f, 1024)

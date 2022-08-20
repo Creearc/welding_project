@@ -45,11 +45,11 @@ def ask(plc, class_code, instance, attribute, service=b"\x0E", data=None):
     return response.error
 
 with CIPDriver(robot) as plc:
-    print(read_register(plc, 25))
-    print(write_register(plc, 25, 31))
-    print(read_register(plc, 25))
-
-    print(read_register(plc, 29))
+##    print(read_register(plc, 25))
+##    print(write_register(plc, 25, 31))
+##    print(read_register(plc, 25))
+##
+##    print(read_register(plc, 29))
 
     print(ask(plc,
               class_code=b'\x04',
