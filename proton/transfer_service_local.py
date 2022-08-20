@@ -21,7 +21,7 @@ states['z'] = 0
 ip = '192.168.0.101'
 
 lock = threading.Lock()
-debug = not True
+debug = True
 
 
 if debug:
