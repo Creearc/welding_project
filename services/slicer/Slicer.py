@@ -1,10 +1,16 @@
- 
+from config import settings
 import sys
 import os
 
 COMMAND = '''{number}: L P[{position_index}] {speed} CNT100 COORD PTH  ;'''
-skip_start = 5
-skip_end = 5
+skip_start = settings["skip_start"]
+skip_end = settings["skip_end"]
+
+SENSOR_POS = (settings["robot_x"] - settings["sensor_x"],
+              settings["robot_y"] - settings["sensor_y"],
+              settings["sensor_z"])
+
+FIRST_LAYERS_Z = (settings["first_layers"], settings["first_layers_z"])
 
 def fix_path(path):
     path = path.replace('\\', '/')
@@ -126,8 +132,13 @@ try:
             if use_distance_sensor:
                 position_parts_distance = position_parts.copy()
                 coords = position_parts_distance[2].split()
-                coords[2] = str(round(float(coords[2]) - 111, 2)) ###############################
-                coords[6] = str(round(float(coords[6]) + 13, 2))  ###############################
+                coords[2] = str(round(float(coords[2]) + SENSOR_POS[0], 2)) ###############################
+                coords[6] = str(round(float(coords[6]) + SENSOR_POS[1], 2))  ###############################
+                if layer_number < FIRST_LAYERS_Z[0]:
+                    coords[10] = str(round(float(coords[10]) + SENSOR_POS[2] + FIRST_LAYERS_Z[1], 2))
+                else:
+                    coords[10] = str(round(float(coords[10]) + SENSOR_POS[2], 2))
+                    
                 position_parts_distance[2] = ' '.join(coords)
             
             position_parts = ['P[{}] {{\n'.format(line_number)] + position_parts
@@ -154,7 +165,10 @@ try:
             head_data[4] = 'LINE_COUNT = {};\n'.format(len(collected_data[layer]))
             file.write(''.join(head_data))
 
-            file.write(':R[35]={};\n'.format(hights[layer]))
+            if layer < FIRST_LAYERS_Z[0]:
+                file.write(':SR[21]={};\n'.format(float(hights[layer]) + SENSOR_POS[2] + FIRST_LAYERS_Z[1]))
+            else:
+                file.write(':SR[21]={};\n'.format(float(hights[layer]) + SENSOR_POS[2]))
             file.write(':R[34]=0;\n')
 
             for data in collected_data[layer]:
@@ -184,9 +198,9 @@ try:
                         data_parts[0] = '{}:'.format(lines_number + line_number)
                         data_parts[2] = 'P[{}]'.format(lines_number + line_number)
                         if i == 0:
-                            data_parts[3] = '50cm/min'
+                            data_parts[3] = '{}cm/min'.format(settings["start_speed"])
                         else:
-                            data_parts[3] = '600cm/min'
+                            data_parts[3] = '{}cm/min'.format(settings["speed"])
                             
                         file.write('{}\n'.format(' '.join(data_parts)))
                         

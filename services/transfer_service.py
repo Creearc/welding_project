@@ -12,7 +12,7 @@ from serial import Serial
 path = sys.path[0].replace('\\', '/')
 sys.path.insert(0, '{}/modules'.format(path))
 
-import cip 
+import cip
 import ftp_functions
 
 FILES_PATH = '/home/pi/files/'
@@ -59,7 +59,7 @@ def main():
       is_start = tmp['is_start']
       current_file_path = tmp['current_file_path']
       stop_after_layer = tmp['stop_after_layer'] # to delete
-      is_continuous = tmp['is_continuous'] # to delete      
+      is_continuous = tmp['is_continuous'] # to delete
       next_file_path = tmp['next_file_path'] # to delete
       is_last_file = tmp['is_last_file'] # to delete
 
@@ -69,9 +69,9 @@ def main():
         if states['state'] == -1:
           ftp = ftp_functions.Ftp_connection()
           f = cip.Fanuc()
-          
+
         state = int(f.read_r(33)[1][0]) # try except for robot off
-    
+
         if state == 1:
           states['state'] = 0
           ''' Robot is ready '''
@@ -101,9 +101,9 @@ def main():
 
         elif state == 0:
           states['state'] = 0
-          
+
         else:
-          states['state'] = 1    
+          states['state'] = 1
 
 
         if file_to_delete != None and time.time() - file_to_delete_time > 5.0:
@@ -117,12 +117,14 @@ def main():
     except Exception as e:
         print('ERROR -> ', e)
         states['state'] = -1
- 
+
     time.sleep(0.01)
 
 
 def distance_thread():
   global states, lock, f
+
+  y = 49.8
 
   while True:
     try:
@@ -155,7 +157,7 @@ def distance_thread():
 
             if activate_sensor:
                 data = client.read_holding_registers(6, 7, unit=1)
-                msg =  robot_z - float(str(data.registers[0] * k).encode('utf-8'))
+                msg = robot_z + y - float(str(data.registers[0] * k).encode('utf-8'))
                 print(msg)
                 states['z'] = msg
                 #states['x'] = float(f.read_sr(23)[1].decode().strip())
@@ -164,15 +166,15 @@ def distance_thread():
                 states['z'] = 0
 
             time.sleep(0.01)
-              
+
     except Exception as e:
           print(e)
           time.sleep(5.0)
-  
-  
+
+
 
 def server():
-  global data, states, lock 
+  global data, states, lock
 
   context = zmq.Context()
   socket = context.socket(zmq.REP)
@@ -218,5 +220,3 @@ if __name__ == '__main__':
   threading.Thread(target=main, args=()).start()
   threading.Thread(target=distance_thread, args=()).start()
   threading.Thread(target=server, args=()).start()
-
-  
